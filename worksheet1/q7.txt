@@ -1,0 +1,26 @@
+A heap is a binary tree-based data structure that follows the heap property. In a heap, the value of each node is compared 
+to the values of its children in a specific way:
+Max-Heap: The value of each node is greater than or equal to the values of its children, ensuring that the root node
+contains the maximum value. As you move down the tree, the values decrease.
+Min-Heap: The value of each node is less than or equal to the values of its children, ensuring that the root node contains
+the minimum value. As you move down the tree, the values increase.
+This property guarantees that the largest (in a max-heap) or smallest (in a min-heap) value is always at the root, and the 
+tree maintains a specific order based on the type of heap.
+Types of Heaps
+There are two main types of heaps:
+Max Heap: The root node contains the maximum value, and the values decrease as you move down the tree.
+Min Heap: The root node contains the minimum value, and the values increase as you move down the tree.
+Heap Operations
+Common heap operations are:
+Insert: Adds a new element to the heap while maintaining the heap property.
+Extract Max/Min: Removes the maximum or minimum element from the heap and returns it.
+Heapify: Converts an arbitrary binary tree into a heap.
+Types of Heaps
+There are two main types of heaps:
+Max Heap: The root node contains the maximum value, and the values decrease as you move down the tree.
+Min Heap: The root node contains the minimum value, and the values increase as you move down the tree.
+Heap Operations
+
+
+
+
