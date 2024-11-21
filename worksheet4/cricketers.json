@@ -1,0 +1,20 @@
+[
+    {
+        "player_name": "Dravid",
+        "player_email": "rahul@abc.org",
+        "player_score": 45,
+        "man_of_the_match": false
+    },
+    {
+        "player_name": "Rohit",
+        "player_email": "rohit@abc.org",
+        "player_score": 75,
+        "man_of_the_match": false
+    },
+    {
+        "player_name": "Dhoni",
+        "player_email": "thala@abc.org",
+        "player_score": 100,
+        "man_of_the_match": true
+    }
+]
