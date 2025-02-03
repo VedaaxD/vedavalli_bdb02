@@ -42,22 +42,29 @@ std_dev=np.std(y_pred-y_test)
 print(f"Standard Deviation of the model: {std_dev}")
 
 
-# Choose a feature to visualize (e.g., first feature)
-X_feature = X_train_scaled[:, 26]  # First feature after scaling
+plt.figure(figsize=(12, 8))
 
-# Sort values for a smooth curve
-X_feature_sorted = np.sort(X_feature)
-z = model.intercept_ + model.coef_[0, 0] * X_feature_sorted  # Compute z values
-sigmoid = 1 / (1 + np.exp(-z))  # Compute sigmoid function
+# Calculate the linear combination for all features (dot product of X_test_scaled and model coefficients)
+linear_combination = np.dot(X_test_scaled, model.coef_[0]) + model.intercept_
 
-# Plot the sigmoid curve
-plt.figure(figsize=(8, 5))
-plt.plot(X_feature_sorted, sigmoid, label="Sigmoid Curve", color='blue')
-plt.scatter(X_feature, y_train, color='red', alpha=0.5, label="Data Points")  # Original data
-plt.xlabel("Feature Value (Standardized)")
-plt.ylabel("Probability")
-plt.title("Sigmoid Curve of Logistic Regression")
-plt.legend()
-plt.grid()
+# Apply the sigmoid function to get probabilities
+sigmoid = 1 / (1 + np.exp(-linear_combination))
+
+# Scatter plot of true labels vs predicted probabilities
+plt.scatter(sigmoid, y_test, color='black', label='True Labels')
+
+# Sort sigmoid values and plot a smooth sigmoid curve
+sorted_idx = np.argsort(sigmoid)  # Sort probabilities
+sorted_sigmoid = sigmoid[sorted_idx]
+sorted_labels = y_test.iloc[sorted_idx]  # Sort true labels correspondingly (if y_test is a pandas Series)
+
+# Plot the curve
+plt.plot(sorted_sigmoid, sorted_labels, color='red', label='Smoothed Relationship')
+
+plt.title("Logistic Regression Sigmoid Curve for All Features")
+plt.xlabel("Predicted Probability of Malignancy")
+plt.ylabel("True Labels (0 = Benign, 1 = Malignant)")
+plt.legend(loc="best")
 plt.show()
+
 
